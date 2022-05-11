@@ -4,10 +4,11 @@ const saleController = require('./controllers/saleController');
 
 const app = express();
 
+app.get('/products/:id', productController.getById);
 app.get('/products', productController.getAll);
 
-app.get('/products/:id', productController.getById);
 // não remova esse endpoint, é para o avaliador funcionar
+app.get('/sales/:id', saleController.getById);
 app.get('/sales', saleController.getAll);
 
 app.get('/', (_request, response) => {
