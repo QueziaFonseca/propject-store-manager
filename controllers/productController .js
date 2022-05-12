@@ -15,7 +15,23 @@ const getById = async (req, res) => {
   return res.status(200).json(product[0]);
 };
 
+const createProduct = async (req, res) => {
+  try {
+    const { name, quantity } = req.body;  
+    // const name = +req.body.name;
+    // const quantity = +req.body.name;
+  
+  const product = await productService.createProduct(name, quantity);
+  return res.status(201).json(product);
+  // console.log('product at controller', product);
+  } catch (error) {
+    return res.status(409).json({ message: error.message });
+    // console.log('controller error', error.message);
+  }
+};
+
 module.exports = {
   getAll,
   getById,
+  createProduct,
 };
