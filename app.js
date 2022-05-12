@@ -22,6 +22,7 @@ app.get('/sales/:id', saleController.getById);
 app.post('/sales', saleValidation);
 
 app.put('/products/:id', productController.updateById);
+app.delete('/products/:id', productController.deleteById);
 app.use((err, _req, _res, _next) => {
   if (err) return res.status(500).json({ message: err.message });
 });
