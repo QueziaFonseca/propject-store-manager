@@ -7,9 +7,11 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const products = await productModel.getById(id);
-  
-  return products;
+  const product = await productModel.getById(id);
+  if (!product) {
+    throw new Error('Product not found');
+  }
+  return product;
 };
 
 const createProduct = async (name, quantity) => {
@@ -24,8 +26,19 @@ const createProduct = async (name, quantity) => {
   return newProduct;
 };
 
+const updateById = async (id, name, quantity) => {
+  const idCheck = await productModel.getById(id);
+  if (!idCheck.length) {
+    throw new Error('Product not found');
+  }
+  const updatedProduct = productModel.updateById(id, name, quantity);
+  
+  return updatedProduct;
+};
+
 module.exports = {
  getAll, 
  getById,
  createProduct,
+ updateById,
 };

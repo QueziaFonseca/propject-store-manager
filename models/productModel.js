@@ -9,6 +9,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
+  console.log('entrou em getById');
   const [products] = await connection.execute(
     'SELECT * FROM StoreManager.products WHERE id = ?', [id],
   );
@@ -37,9 +38,22 @@ const createProduct = async (name, quantity) => {
   return newProduct;
 };
 
+const updateById = async (id, name, quantity) => {
+  const query = 'UPDATE products SET name=?, quantity=? WHERE id=?';
+  const [product] = await connection.execute(query, [name, quantity, id]);
+  console.log('model - product', product);
+  const edittedProduct = {
+    id,
+    name,
+    quantity: Number(quantity),
+  };
+  return edittedProduct;
+};
+
 module.exports = {
   getAll,
   getById,
   getByName,
   createProduct,
+  updateById,
 };
