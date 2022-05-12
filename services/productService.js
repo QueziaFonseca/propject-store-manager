@@ -15,7 +15,7 @@ const getById = async (id) => {
 const createProduct = async (name, quantity) => {
   const productName = await productModel.getByName(name);
 
-  console.log('productService', productName)
+  console.log('productService', productName);
   if (productName.length > 0) {
     throw new Error('Product already exists');
   }
