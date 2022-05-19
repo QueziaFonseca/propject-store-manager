@@ -25,7 +25,7 @@ const createSales = async (req, res) => {
 const updateSale = async (req, res) => {
   const { id } = req.params; 
   const updatedItemArray = req.body; 
-  const response = await saleService.updateSale(id, updatedItemArray);
+  const response = await saleService.updateSale(Number(id), updatedItemArray);
   return res.status(200).json(response);
 };
 

@@ -27,14 +27,15 @@ const createSales = async (itemsSold) => {
 };
 
 // updatedItem é um array com objeto
-const updateSale = async (id, updatedItemArray) => {
-  const newArray = updatedItemArray.map(async (item) => {
-    await saleModel.updateSale(id, item.productId, item.quantity); 
+const updateSale = async (id, itemUpdated) => {
+  console.log(id, itemUpdated);
+  const newArray = itemUpdated.map(async (item) => {
+   await saleModel.updateSale(id, item.productId, item.quantity); 
   });
   
   await Promise.all(newArray);
-  
-  return { saleId: id, updatedItemArray };
+  console.log(newArray);
+  return { saleId: id, itemUpdated };
 };
 
 module.exports = {
