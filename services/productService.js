@@ -39,7 +39,9 @@ const updateById = async (id, name, quantity) => {
 const deleteById = async (id) => {
   const idCheck = await productModel.getById(id);
   if (!idCheck.length) {
-    throw new Error('Product not found');
+    const error = new Error('Product not found');
+    console.log(error.message);
+    throw error;
   }
   const deletedProduct = await productModel.deleteById(id);
   return deletedProduct;

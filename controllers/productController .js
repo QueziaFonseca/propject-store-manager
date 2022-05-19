@@ -48,6 +48,8 @@ const deleteById = async (req, res) => {
     const deletedProduct = await productService.deleteById(id);
     return res.status(204).json(deletedProduct);
   } catch (error) {
+    // next({ status: 404, message: error.message });
+    // error.status = 404;
     return res.status(404).json({ message: error.message });
   }
 };
