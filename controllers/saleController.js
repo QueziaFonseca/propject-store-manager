@@ -7,16 +7,13 @@ const getAll = async (_req, res) => {
 };
 
 const getById = async (req, res) => {
-  // try {
+  try {
     const { id } = req.params;
     const sale = await saleService.getById(id);
-    if (sale.length < 1) {
-      return res.status(404).json({ message: 'Sale not found' });
-    }
     return res.status(200).json(sale);
-  // } catch (error) {
-    
-  // }
+    } catch (error) {
+    return res.status(404).json({ message: error.message }); 
+  }
 };
 
 const createSales = async (req, res) => {
