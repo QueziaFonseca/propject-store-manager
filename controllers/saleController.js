@@ -14,7 +14,24 @@ const getById = async (req, res) => {
   }
   return res.status(200).json(sale);
 };
+
+const createSales = async (req, res) => {
+  console.log('chamou controller');
+  const soldItems = req.body; 
+  const result = await saleService.createSales(soldItems); 
+  return res.status(201).json(result);
+};
+
+const updateSale = async (req, res) => {
+  const { id } = req.params; 
+  const updatedItemArray = req.body; 
+  const response = await saleService.updateSale(id, updatedItemArray);
+  return res.status(200).json(response);
+};
+
 module.exports = {
   getAll,
   getById,      
+  createSales,
+  updateSale,
 };

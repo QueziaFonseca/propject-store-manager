@@ -1,17 +1,30 @@
+const handleError = (status, message) => ({
+  status, message,
+});
+
+const errorhandled = (body) => {
+  body.forEach((element) => {
+    if (!element.productId) {
+      throw handleError(400, '"productId" is required');
+    }
+  
+    if (!element.quantity) {
+      throw handleError(400, '"quantity" is required');
+    }
+  
+    if (element.quantity <= 0) {
+      throw handleError(422, '"quantity" must be greater than or equal to 1');
+    }  
+  });
+};
+
 const saleValidation = (req, res, next) => {
-  if (!req.body.productId) {
-    return res.status(400).json({ message: '"productId" is required' });
+  try {
+    errorhandled(req.body);
+    next();
+  } catch (error) {
+    return res.status(error.status).json({ message: error.message });
   }
-
-  if (!req.body.quantity) {
-    return res.status(400).json({ message: '"quantity" is required' });
-  }
-
-  if (req.body.quantity <= 0) {
-    return res.status(422).json({ message: '"quantity" must be greater than or equal to 1' });
-  }
-
-  next();
 };
 
 module.exports = saleValidation;

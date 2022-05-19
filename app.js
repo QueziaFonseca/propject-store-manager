@@ -19,10 +19,12 @@ app.get('/products/:id', productController.getById);
 
 app.get('/sales', saleController.getAll);
 app.get('/sales/:id', saleController.getById);
-app.post('/sales', saleValidation);
+app.post('/sales', saleValidation, saleController.createSales);
 
 app.put('/products/:id', productController.updateById);
+app.put('/sales/:id', saleValidation, saleController.updateSale); // 8
 app.delete('/products/:id', productController.deleteById);
+
 app.use((err, _req, _res, _next) => {
   if (err) return res.status(500).json({ message: err.message });
 });
