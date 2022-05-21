@@ -9,3 +9,5 @@ password: process.env.MYSQL_PASSWORD,
 database: process.env.MYSQL_DATABASE || 'StoreManager',
 });
 module.exports = connection;
+
+/* as informações sensíveis, como credenciais de acesso ao banco de dados, estão expostas apenas para fins didáticos!  */
