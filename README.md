@@ -1,8 +1,7 @@
 # Boas-vindas ao repositório do Projeto Store Manager!
 
 
-<details>
-  <summary><strong>👨‍💻 O que foi desenvolvido</strong></summary><br />
+  ## 👨‍💻 O que foi desenvolvido
 
   Neste projeto foi desenvolvida uma API RESTful.
 
@@ -14,17 +13,16 @@
   
   Para a gestão de dados foi utilizado o banco MySQL.
   
- <br />
-</details>
 
 
 
-<details>
-  <summary><strong>Informaçõe sobre os Testes Unitários</strong></summary><br />
 
-## Foram utilizados o **mocha**, **chai** e **sinon** para escrever os testes;
+## Informaçõe sobre criação dos Testes Unitários
 
-- Os testes das camadas da APi (`models`, `services` e `controllers`) estão contidos na pasta `test/unit`, segundo o esquema abaixo:
+### Foram utilizados o **mocha**, **chai** e **sinon** para escrever os testes;
+
+- Os testes das camadas da APi (`models`, `services` e `controllers`) estão contidos na pasta `test/unit`. Os arquivos de testes referentes a cada camada estão contidos nos arquivos correspondentes à  cada camada, segundo o esquema abaixo:
+```tree
 .
 ├─ ...
 ├─ test
@@ -39,7 +37,7 @@
 │            ├─ productsModels.js
 │            └─ salesModels.js
 └─ ...
-
+```
 
 -Foram escritos testes unitários que cobrem cerca de 40% das camadas da sua aplicação
 
@@ -47,11 +45,10 @@
 
 -  Para rodar os testes utilize `npm run test:mocha`; (após instalar as dependencias do projeto com `npm install` conforme consta abaixo:)
 
-<br />
-<details>
 
-<details>
-  <summary><strong>‼️ Para executar o projeto siga as instruções:</strong></summary><br />
+
+
+## Para executar o projeto siga as instruções abaixo:
 
   1. Clone o repositório
 
@@ -63,5 +60,3 @@
   2. Instale as dependências [**Caso existam**]
 
   - `npm install`
- <br />
-<details>
